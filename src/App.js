@@ -18,7 +18,7 @@ function App() {
   // const cartItemCount = 5
   return (
     <>
-      <Navbar onSearch={onSearch} cartItemCount={2} />
+      <Navbar onSearch={onSearch} cartItemCount={5} />
       <Routes>
         <Route path="/" element={<Products />} />
         <Route path="/product/:productId" element={<Product />} />
