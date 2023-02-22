@@ -1,13 +1,15 @@
 import { React, useEffect, useState } from 'react'
 import { FakeStoreApi } from "../../services/fake-store-api"
-import { useSearchParams } from 'react-router-dom'
+import { useSearchParams, Link } from 'react-router-dom'
 import { Item } from "../../Components/item"
+import { useCart } from "../../Components/context/cart"
+
 
 const Products = () => {
     const [loading, setLoading] = useState(true);
     const [products, setProducts] = useState([]);
     const [query] = useSearchParams();
-    // const { addToCart } = useCart()
+    const { addToCart } = useCart()
 
     const searchQuery = query.get('q');
 
@@ -20,12 +22,15 @@ const Products = () => {
         }
         fetchProducts().catch(console.error)
     }, [searchQuery])
-
+    // console.log(products)
     if (!loading && searchQuery && !products.length) {
         return (
             <div className="container">
                 <div className="product py-2">
-                    <div className="details p-3">No products found matching your query.</div>
+                    <div className="details p-3">No products found matching your query .   &nbsp;
+                        <Link to="/" replace>
+                            homepage
+                        </Link> </div>
                 </div>
             </div>
         )
@@ -40,7 +45,7 @@ const Products = () => {
                             <div className="loader" />
                         ) : (
                             products.map((product) => (
-                                <Item key={product.id} data={product} addToCart={() => { }} />
+                                <Item key={product.id} data={product} addToCart={() => addToCart(product)} />
                             ))
                         )}
                     </div>

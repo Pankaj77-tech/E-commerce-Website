@@ -12,7 +12,7 @@ const Navbar = ({ onSearch, cartItemCount }) => {
     }
     return (
         <div className="wrapper">
-            <div className="container">
+            <header className="container">
                 <div className="header py-2">
                     <div className="grid">
                         <Link to="/" className="link">
@@ -27,14 +27,14 @@ const Navbar = ({ onSearch, cartItemCount }) => {
                             </form>
                         </div>
                         <Link to="/cart" className="link headerCart">
-                            <img className="cartImg" src="/cart.png" alt="cart" />{cartItemCount > 0 && (
+                            <img className="cartImg" src="/cart.svg" alt="cart" />{cartItemCount > 0 && (
                                 <div className="cartCounter">{cartItemCount <= 9 ? cartItemCount : "9+"}</div>
                             )
                             }
                         </Link>
                     </div>
                 </div>
-            </div>
+            </header>
         </div>
     )
 }

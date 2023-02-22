@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 const Item = ({ data, addToCart }) => {
 
     const { id, image, title, price } = data
-
+    // console.log(data)
     return (
         <div className="card">
             <div className="grid">
